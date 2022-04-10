@@ -289,7 +289,7 @@ fi
 # Copy the bulk of the archive
 cp "$INFILE" "$OUTFILE"
 
-# Copy the koly block of the internal dmg file. Append to the new file
+# Copy the koly block from the internal dmg file. Append to the new file
 get_koly_block --offset $((FILE_SIZE + FILE_OFFSET)) "$INFILE" >> "$OUTFILE"
 
 # Get the location of the offset to the dmg in the new koly block
