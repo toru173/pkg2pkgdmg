@@ -298,7 +298,7 @@ DMG_OFFSET_LOCATION=$(($(get_eof "$OUTFILE") - 512 + 24))
 # Get the old offset, per the old dmg
 OLD_DMG_OFFSET=$(bin2dec $(dd if="$OUTFILE" skip=$DMG_OFFSET_LOCATION bs=1 count=8 2> /dev/null))
 
-# Get the location of the offset to the dmg's xml file
+# Get the location of the offset to the dmg's plist file
 XML_OFFSET_LOCATION=$(($(get_eof "$OUTFILE") - 512 + 216))
 
 # Get the old offset, per the old dmg
@@ -313,3 +313,4 @@ dec2bin $NEW_DMG_OFFSET | dd of="$OUTFILE" bs=1 count=8 seek=$DMG_OFFSET_LOCATIO
 dec2bin $NEW_XML_OFFSET | dd of="$OUTFILE" bs=1 count=8 seek=$XML_OFFSET_LOCATION conv=notrunc 2> /dev/null
 
 # And we're done!
+v
