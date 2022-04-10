@@ -187,7 +187,7 @@ get_dmg_id () {
 }
 
 get_file_size () {
-    # Gets the length of the file in archive "$1" at index "$2"
+    # Gets the size of the file in archive "$1" at index "$2"
     # in the archive's ToC. We use the 'size' variable because
     # the archive should be uncompressed
 
