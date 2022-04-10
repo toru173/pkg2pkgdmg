@@ -21,6 +21,7 @@ So what we need to do is patch the pkg file by extracting the koly block from th
     sudo xar -x -P -f ../InstallESD.dmg
     < Edits to InstallOS.pkg/InstallESD.dmg go here >
     sudo xar -c --compression=none -f ../New\ InstallESD.pkg *
+    cd ..
     sudo ./pkg2pkgdmg New\ InstallESD.pkg New\ InstallESD.dmg
 
 ![](https://github.com/toru173/pkg2pkgdmg/blob/main/InstallESD%20koly%20block.png)
