@@ -6,7 +6,7 @@ Converts a pkg (xar) file with an internal dmg into a hybrid pkgdmg file that wi
 
 This should have never been written as a bash script. Bash (and shells in general) are terrible for manipulating binary files but *It Works(tm)* so I'm not changing it now. Feel free to reimpliment in the language of your choice.
 
-A pkgdmg is a combination file that acts as a dmg with the extension .dmg, and as a macOS installation file (a package) with the extension .pkg. The only thing you need to do to change the behaviour of the file is to change the extension. This works because packages are effectively xar archives (good primer [here](https://github.com/mackyle/xar/wiki/xarformat)) which don't care about any data that isn't in the file's XML-based Table of Contents. The pkgdmg file format uses this as an advantage as it simply concatenates dmg-relevant information (a 'koly block', good primer [here](http://newosxbook.com/DMG.html)) on to the end of the xar file, which is ignored when the OS treats the pkgdmg as a pkg file.
+A pkgdmg is a combination file that acts as a macOS disk Image (a dmg) with the extension .dmg, and as a macOS installation file (a package) with the extension .pkg. The only thing you need to do to change the behaviour of the file is to change the extension. This works because packages are effectively xar archives (good primer [here](https://github.com/mackyle/xar/wiki/xarformat)) which don't care about any data that isn't in the file's XML-based Table of Contents. The pkgdmg file format uses this as an advantage as it simply concatenates dmg-relevant information (a 'koly block', good primer [here](http://newosxbook.com/DMG.html)) on to the end of the xar file, which is ignored when the OS treats the pkgdmg as a pkg file.
 
 Things of note:
 
