@@ -16,7 +16,6 @@ Things of note:
 
 So what we need to do is patch the pkg file by extracting the koly block from the dmg within the archive, appending it to the file and editing the offsets within the block to point to the dmg within the archive.
 
-(https://github.com/toru173/pkg2pkgdmg/blob/main/InstallESD%20koly%20block.png?raw=true)
+![](https://github.com/toru173/pkg2pkgdmg/blob/main/InstallESD%20koly%20block.png)
 
-(https://github.com/toru173/pkg2pkgdmg/blob/main/New%20InstallESD%20koly%20block.png?raw=true)
-)
+![](https://github.com/toru173/pkg2pkgdmg/blob/main/New%20InstallESD%20koly%20block.png)
