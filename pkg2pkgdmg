@@ -186,16 +186,16 @@ get_dmg_id () {
     echo $DMG_ID
 }
 
-get_dmg_size () {
+get_file_size () {
     # Gets the length of the file in archive "$1" at index "$2"
     # in the archive's ToC. We use the 'size' variable because
     # the archive should be uncompressed
 
-    local DMG_SIZE=$(echo "$(get_toc "$1")" | xmllint --xpath "//*[@id=$2]/data/size/text()" -)
-    echo $DMG_SIZE
+    local FILE_SIZE=$(echo "$(get_toc "$1")" | xmllint --xpath "//*[@id=$2]/data/size/text()" -)
+    echo $FILE_SIZE
 }
 
-get_dmg_offset () {
+get_file_offset () {
     # Gets the offset of the dmg in archive "$1" at index "$2"
     # This is used to find the byte offset of the dmg within
     # the archive
@@ -266,8 +266,8 @@ fi
 DMG_ID=$(get_dmg_id "$INFILE")
 
 # Get the offset and file length here.
-FILE_SIZE=$(get_dmg_size "$INFILE" $DMG_ID)
-FILE_OFFSET=$(get_dmg_offset "$INFILE" $DMG_ID)
+FILE_SIZE=$(get_file_size "$INFILE" $DMG_ID)
+FILE_OFFSET=$(get_file_offset "$INFILE" $DMG_ID)
 
 # Check to make sure it's a valid dmg
 check_koly_block --offset $((FILE_SIZE + FILE_OFFSET)) "$INFILE"
@@ -282,7 +282,7 @@ fi
 # the xar archive. We need to copy $INFILE to $OUTFILE,
 # concaternate the koly block of the internal dmg onto
 # $OUTFILE, then patch the 'Data fork offset' and the
-# Offset of the dmg's property list by adding $FILE_OFFSET
+# Offset of the dmg's property list by adding $DMG_OFFSET
 # to both of these values
 
 # Copy the bulk of the archive
