@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 # Converts a pkg (xar) file with an internal dmg into a hybrid
 # pkgdmg file that will open as either a disk image or installer
 # package, depending on the extension. This pkgdmg can then be
