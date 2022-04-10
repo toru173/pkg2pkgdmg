@@ -282,7 +282,7 @@ fi
 # the xar archive. We need to copy $INFILE to $OUTFILE,
 # concaternate the koly block of the internal dmg onto
 # $OUTFILE, then patch the 'Data fork offset' and the
-# Offset of the dmg's property list by adding $DMG_OFFSET
+# Offset of the dmg's property list by adding $FILE_OFFSET
 # to both of these values
 
 # Copy the bulk of the archive
