@@ -14,7 +14,7 @@
 # I've licensed this with the Unlicense, but I'd still appreciate
 # if you drop me a hello or let me know if you're using this!
 #
-# - Toru173
+# - toru173
 #
 # This is free and unencumbered software released into the public domain.
 #
@@ -104,7 +104,7 @@ dec2bin () {
     # Takes a decimal number passed at "$1" and returns
     # the 64-bit binary representation of that number
     
-    printf "%016x\n" "$1" | xxd -ps -g0 -r | cat
+    printf "%016x\n" "$1" | xxd -ps -g0 -r
 }
 
 bin2dec () {
