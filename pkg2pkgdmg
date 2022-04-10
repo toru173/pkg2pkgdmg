@@ -77,7 +77,7 @@ check_args () {
     OUTFILE="$2"
 
     if [[ -d "$OUTFILE" ]]; then
-        echo "Error: $OUTPUT_PATH is a directory, not a file" >> /dev/stderr
+        echo "Error: $OUTFILE is a directory, not a file" >> /dev/stderr
         exit 1
     fi
 
