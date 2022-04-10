@@ -160,7 +160,7 @@ get_dirlist () {
 
 check_for_dmg () {
     # Checks to see if there is a dmg in the xar archive
-    # passed at "$1". Currently only supports on dmg per archive
+    # passed at "$1". Currently only supports one dmg per archive
 
     local NUM_DMGS=$(echo $(get_dirlist "$1") | grep -ci ".dmg")
     if [[ $NUM_DMGS -eq 0 ]]; then
