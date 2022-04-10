@@ -196,13 +196,14 @@ get_file_size () {
 }
 
 get_file_offset () {
-    # Gets the offset of the dmg in archive "$1" at index "$2"
-    # This is used to find the byte offset of the dmg within
+    # Gets the offset of the file in archive "$1" at index "$2"
+    # This is used to find the byte offset of the file within
     # the archive
 
     local HEADER_SIZE=$(get_numeric "$(echo "$(get_header "$1")" | grep "size")")
     local TOC_SIZE=$(get_numeric "$(echo "$(get_header "$1")" | grep "Compressed")")
     local HEAP_OFFSET=$(get_numeric "$(echo "$(get_toc "$1")" | xmllint --xpath "//*[@id=$2]/data/offset/text()" - )")
+    
     echo $(($HEADER_SIZE + $TOC_SIZE + $HEAP_OFFSET))
 }
 
@@ -234,9 +235,9 @@ get_koly_block () {
 }
 
 check_koly_block () {
-    # Takes a block of bytes (usually passed from get_koly) and checks
-    # for the magic 'koly' as the first four bytes. Returns true if it
-    # is a valid koly block, otherwise false
+    # Takes a block of bytes (usually passed from get_koly_block) and
+    # checks for the magic 'koly' as the first four bytes. Returns
+    # success (0) if it is a valid koly block, otherwise error (1)
 
     local MAGIC=$(get_koly_block "$@" | dd bs=1 count=4 2> /dev/null)
 
@@ -279,8 +280,8 @@ if [[ $VALID_DMG -ne 0 ]]; then
 fi
 
 # Here we know we have a single, apparently valid dmg within
-# the xar archive. We need to copy $INFILE to $OUTFILE,
-# concaternate the koly block of the internal dmg onto
+# a valid xar archive. We need to copy $INFILE to $OUTFILE,
+# concatenate the koly block of the internal dmg onto
 # $OUTFILE, then patch the 'Data fork offset' and the
 # Offset of the dmg's property list by adding $DMG_OFFSET
 # to both of these values
@@ -288,7 +289,7 @@ fi
 # Copy the bulk of the archive
 cp "$INFILE" "$OUTFILE"
 
-# Copy the koly block. Append to the new file
+# Copy the koly block of the internal dmg file. Append to the new file
 get_koly_block --offset $((FILE_SIZE + FILE_OFFSET)) "$INFILE" >> "$OUTFILE"
 
 # Get the location of the offset to the dmg in the new koly block
@@ -300,7 +301,7 @@ OLD_DMG_OFFSET=$(bin2dec $(dd if="$OUTFILE" skip=$DMG_OFFSET_LOCATION bs=1 count
 # Get the location of the offset to the dmg's xml file
 XML_OFFSET_LOCATION=$(($(get_eof "$OUTFILE") - 512 + 216))
 
-# Get the old ofset, per the old dmg
+# Get the old offset, per the old dmg
 OLD_XML_OFFSET=$(bin2dec $(dd if="$OUTFILE" skip=$XML_OFFSET_LOCATION bs=1 count=8 2> /dev/null))
 
 # Calculate new offsets
