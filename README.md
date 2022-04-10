@@ -14,7 +14,7 @@ Key things of note:
 - The files in a pkgdmg are not compressed. Though parts may be - such as the dmg itself - the significant files are uncompressed as the system needs to know exact byte offset within the pkgdmg to make things work, and they need to be able to be read byte-for-byte from the xar archive
 - The inner dmg at /Archive/of/OS/installer/OSInstall.pkg/InstallESD.dmg appears to be a normal, zlib-compressed dmg - one that can be create with hdiutil
 
-Editing a pkgdmg using normal tools results in the loss of the duality - depending on the tools used, it devolves into a pkg or dmg file. We can extract the pkg file easily to a local directory to edit, and can rebuild the pkgdmg once we've finished editing the pkg. What we need to do is patch the pkg file by extracting the koly block from the dmg within the archive, append it to the file and edit the offsets within the block to point to the dmg within the archive. This is what pkg2pkgdmg automates:
+Editing a pkgdmg using normal tools results in the loss of the duality - depending on the tools used, it devolves into a pkg or dmg file. We can extract the pkg file easily to a local directory to edit using xar and can rebuild the pkgdmg once we've finished editing the pkg. To do this, we need to patch the pkg file by extracting the koly block from the dmg within the archive, append it to the file and edit the offsets within the block to point to the dmg within the archive. This is what pkg2pkgdmg automates:
 
     cp /path/to/InstallESD.dmg .
     mkdir InstallESD
