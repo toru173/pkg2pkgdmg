@@ -25,6 +25,6 @@ Editing a pkgdmg using normal tools results in the loss of the duality - dependi
     cd ..
     sudo ./pkg2pkgdmg New\ InstallESD.pkg New\ InstallESD.dmg
 
-![](https://github.com/toru173/pkg2pkgdmg/blob/main/InstallESD%20koly%20block.png)
+![](https://github.com/toru173/pkg2pkgdmg/blob/main/Images/InstallESD%20koly%20block.png)
 
-![](https://github.com/toru173/pkg2pkgdmg/blob/main/New%20InstallESD%20koly%20block.png)
+![](https://github.com/toru173/pkg2pkgdmg/blob/main/Images/New%20InstallESD%20koly%20block.png)
