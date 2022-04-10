@@ -8,7 +8,7 @@
 #
 # This should have never been written as a bash script. Bash
 # (and shells in general) are terrible for manipulating
-# binary files but It Works(tm) so I'm not changing it now
+# binary files but It Works(tm) so I'm not changing it now.
 # Feel free to reimpliment in the language of your choice
 #
 # I've licensed this with the Unlicense, but I'd still appreciate
