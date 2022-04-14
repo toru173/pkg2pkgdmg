@@ -4,7 +4,7 @@
 
 Converts a pkg (xar) file with an internal dmg into a hybrid pkgdmg file that will open as either a disk image or installer package, depending on the extension. This pkgdmg can then be optionally signed using tools that support signing a xar or pkg file. These signed files are often used by the macOS installer, preventing the installation dmg from being modified by malicious parties.
 
-This should have never been written as a bash script. Bash (and shells in general) are terrible for manipulating binary files but *It Works(tm)* so I'm not changing it now. Feel free to reimpliment in the language of your choice.
+This should have never been written as a bash script. Bash (and shells in general) are terrible for manipulating binary files but *It Works(tm)* so I'm not changing it now. I initially started as a shell script to get extra practice writing them and things just snowballed out of control! Feel free to reimpliment in the language of your choice.
 
 ## Background
 
