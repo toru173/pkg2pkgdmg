@@ -16,6 +16,8 @@ A pkgdmg is a combination file that acts as a macOS disk Image (a dmg) with the 
 
 The pkgdmg file format uses this as an advantage as it simply concatenates dmg-relevant information (a 'koly block', good primer [here](http://newosxbook.com/DMG.html)) on to the end of the xar file, which is ignored when the OS treats the pkgdmg as a pkg file. Likewise, the plist that defines the behaviour of the disk image is at a fixed offset in the middle of the image, and contains a number of 'mish' blocks detailing the information contained within the disk image. If it's not in the mish blocks, it's not in the disk image so the leading (and possibly trailing) xar information is ignored.
 
+![](https://github.com/toru173/pkg2pkgdmg/blob/main/Images/InstallESD%20koly%20block%20footer.png)
+
 Key things of note:
 
 - A pkgdmg is essentially a dmg enclosed in an (optionally) signed xar file, with supporting files expected per a distribution-style package (good primer [here](http://s.sudre.free.fr/Stuff/Ivanhoe/FLAT.html))
